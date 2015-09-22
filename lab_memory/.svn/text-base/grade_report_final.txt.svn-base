@@ -1,0 +1,144 @@
+Grading revision r7723 by ivanov3, dated 2015-09-09 13:28:15.000244621 -0500 CDT
+Monad Autograder
+Testing lab_memory at 2015-09-14 01:53:11
+
+"Sometimes I just like to throw things." ~ Cinda Heeren
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+test_constructor (asan) [5 pts]  - FAILED: Memory errors detected by ASAN
+test_allocate (asan)  . [5 pts]  - FAILED: Memory errors detected by ASAN
+test_printrooms (asan)  [20 pts] - FAILED: Memory errors detected by ASAN
+test_any_output . . . . [30 pts] - FAILED: Segmentation fault
+test_correct_output . . [40 pts] - FAILED: Segmentation fault
+
+
+Total score...
+================================================================
+TOTAL SCORE: 0
+
+
+
+Detailed test output...
+================================================================
+----------------------------------------------------------------
+test_constructor (run under asan) [5 points]
+Result: FAILED: Memory errors detected by ASAN
+Took unknown time (10000ms timeout)
+Output:
+----------------------------------------------------------------
+Running test_constructor [worth 5 points, output below]
+==16755==WARNING: AddressSanitizer failed to allocate 0x001aedb93008 bytes
+==16755==AddressSanitizer's allocator is terminating the process instead of returning 0
+==16755==If you don't like this behavior set allocator_may_return_null=1
+==16755==AddressSanitizer CHECK failed: /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/sanitizer_common/sanitizer_allocator.cc:149 "((0)) != (0)" (0x0, 0x0)
+    #0 0x48fca3 in __asan::AsanCheckFailed(char const*, int, char const*, unsigned long long, unsigned long long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_rtl.cc:70:3
+    #1 0x493751 in __sanitizer::CheckFailed(char const*, int, char const*, unsigned long long, unsigned long long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/sanitizer_common/sanitizer_common.cc:76:5
+    #2 0x492324 in __sanitizer::AllocatorReturnNull() /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/sanitizer_common/sanitizer_allocator.cc:149:3
+    #3 0x4216be in operator new[](unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:64:37
+    #4 0x64c7e5 in Allocator::loadRooms(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x64c7e5)
+    #5 0x64b0fc in Allocator::Allocator(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x64b0fc)
+    #6 0x639ef5 in proxy_test::test_constructor(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x639ef5)
+    #7 0x4e61d8 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4e61d8)
+    #8 0x4cd5e3 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4cd5e3)
+    #9 0x4bf139 in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4bf139)
+    #10 0x4b99f2 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4b99f2)
+    #11 0x4b3987 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4b3987)
+    #12 0x4b2b27 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4b2b27)
+    #13 0x4af289 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4af289)
+    #14 0x4ad390 in main (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4ad390)
+    #15 0x30c001ed5c in __libc_start_main (/lib64/libc.so.6+0x30c001ed5c)
+    #16 0x4a5f1c in _start (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4a5f1c)
+
+Result: FAILED:
+Memory Errors Detected by ASAN
+
+----------------------------------------------------------------
+test_allocate (run under asan) [5 points]
+Result: FAILED: Memory errors detected by ASAN
+Took unknown time (10000ms timeout)
+Output:
+----------------------------------------------------------------
+Running test_allocate [worth 5 points, output below]
+==16761==WARNING: AddressSanitizer failed to allocate 0xffffffffffffffff bytes
+==16761==AddressSanitizer's allocator is terminating the process instead of returning 0
+==16761==If you don't like this behavior set allocator_may_return_null=1
+==16761==AddressSanitizer CHECK failed: /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/sanitizer_common/sanitizer_allocator.cc:149 "((0)) != (0)" (0x0, 0x0)
+    #0 0x48fca3 in __asan::AsanCheckFailed(char const*, int, char const*, unsigned long long, unsigned long long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_rtl.cc:70:3
+    #1 0x493751 in __sanitizer::CheckFailed(char const*, int, char const*, unsigned long long, unsigned long long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/sanitizer_common/sanitizer_common.cc:76:5
+    #2 0x492324 in __sanitizer::AllocatorReturnNull() /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/sanitizer_common/sanitizer_allocator.cc:149:3
+    #3 0x4216be in operator new[](unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:64:37
+    #4 0x64c7e5 in Allocator::loadRooms(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x64c7e5)
+    #5 0x64b0fc in Allocator::Allocator(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x64b0fc)
+    #6 0x63a855 in proxy_test::test_allocate(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x63a855)
+    #7 0x4e61d8 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4e61d8)
+    #8 0x4cd5e3 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4cd5e3)
+    #9 0x4bf139 in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4bf139)
+    #10 0x4b99f2 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4b99f2)
+    #11 0x4b3987 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4b3987)
+    #12 0x4b2b27 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4b2b27)
+    #13 0x4af289 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4af289)
+    #14 0x4ad390 in main (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4ad390)
+    #15 0x30c001ed5c in __libc_start_main (/lib64/libc.so.6+0x30c001ed5c)
+    #16 0x4a5f1c in _start (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4a5f1c)
+
+Result: FAILED:
+Memory Errors Detected by ASAN
+
+----------------------------------------------------------------
+test_printrooms (run under asan) [20 points]
+Result: FAILED: Memory errors detected by ASAN
+Took unknown time (10000ms timeout)
+Output:
+----------------------------------------------------------------
+Running test_printrooms [worth 20 points, output below]
+==16766==WARNING: AddressSanitizer failed to allocate 0xffffffffffffffff bytes
+==16766==AddressSanitizer's allocator is terminating the process instead of returning 0
+==16766==If you don't like this behavior set allocator_may_return_null=1
+==16766==AddressSanitizer CHECK failed: /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/sanitizer_common/sanitizer_allocator.cc:149 "((0)) != (0)" (0x0, 0x0)
+    #0 0x48fca3 in __asan::AsanCheckFailed(char const*, int, char const*, unsigned long long, unsigned long long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_rtl.cc:70:3
+    #1 0x493751 in __sanitizer::CheckFailed(char const*, int, char const*, unsigned long long, unsigned long long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/sanitizer_common/sanitizer_common.cc:76:5
+    #2 0x492324 in __sanitizer::AllocatorReturnNull() /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/sanitizer_common/sanitizer_allocator.cc:149:3
+    #3 0x4216be in operator new[](unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:64:37
+    #4 0x64c7e5 in Allocator::loadRooms(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x64c7e5)
+    #5 0x64b0fc in Allocator::Allocator(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x64b0fc)
+    #6 0x63b1c5 in proxy_test::test_printrooms(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x63b1c5)
+    #7 0x4e61d8 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4e61d8)
+    #8 0x4cd5e3 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4cd5e3)
+    #9 0x4bf139 in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4bf139)
+    #10 0x4b99f2 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4b99f2)
+    #11 0x4b3987 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4b3987)
+    #12 0x4b2b27 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4b2b27)
+    #13 0x4af289 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4af289)
+    #14 0x4ad390 in main (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4ad390)
+    #15 0x30c001ed5c in __libc_start_main (/lib64/libc.so.6+0x30c001ed5c)
+    #16 0x4a5f1c in _start (/dev/shm/cs225student/autograder/monad/monad/lab_memory_grade/proxy-asan+0x4a5f1c)
+
+Result: FAILED:
+Memory Errors Detected by ASAN
+
+----------------------------------------------------------------
+test_any_output [30 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+test_correct_output [40 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+
+----------------------------------------------------------------
+Total score...
+================================================================
+TOTAL SCORE: 0
+
